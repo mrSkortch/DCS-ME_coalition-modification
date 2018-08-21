@@ -415,28 +415,34 @@ local function updateCoalitions()
 	neutralCoalition_	= controller_.getNeutralCoalition()
 	
   -- check neu list (in case for old miz)
-	if #neutralCoalition_ == 0 then
-		for i = 0, #me_db_api.country_by_id do
-			if me_db_api.country_by_id[i] then -- because id 14 is nil for some reason
-				local found = false
-				for r = 1, #redCoalition_ do
-					if redCoalition_[r] == i then
-						found = true
-						break
-					end
-				end
-				for b = 1, #blueCoalition_ do
-					if blueCoalition_[b] == i then
-						found = true
-						break
-					end
-				end
-				
-				if found == false then
-					table.insert(neutralCoalition_, i)
-				end
-			end
-		end
+    if #me_db_api.country_by_id ~= #redCoalition_ + #blueCoalition_ + #neutralCoalition_ then 
+        for i = 0, #me_db_api.country_by_id do
+            if me_db_api.country_by_id[i] then -- because id 14 is nil for some reason
+                local found = false
+                for r = 1, #redCoalition_ do
+                    if redCoalition_[r] == i then
+                        found = true
+                        break
+                    end
+                end
+                for b = 1, #blueCoalition_ do
+                    if blueCoalition_[b] == i then
+                        found = true
+                        break
+                    end
+                end
+                for n = 1, #neutralCoalition_ do
+                    if neutralCoalition_[n] == i then
+                        found = true
+                        break
+                    end
+                end
+                
+                if found == false then
+                    table.insert(neutralCoalition_, i)
+                end
+            end
+        end
 	end
 	
 end

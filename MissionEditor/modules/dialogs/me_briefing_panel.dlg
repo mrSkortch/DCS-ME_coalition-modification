@@ -60,69 +60,6 @@ dialog = {
 			},
 			["type"] = "Static",
 		},
-		["Static4"] = {
-			["params"] = {
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 93,
-					["x"] = 15,
-					["y"] = 146,
-				},
-				["enabled"] = true,
-				["text"] = "$start",
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "staticSkin_ME",
-				},
-			},
-			["type"] = "Static",
-		},
-		["Static5"] = {
-			["params"] = {
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 5,
-					["x"] = 138,
-					["y"] = 175,
-				},
-				["enabled"] = true,
-				["text"] = ":",
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "staticSkin2_ME",
-				},
-			},
-			["type"] = "Static",
-		},
-		["Static6"] = {
-			["params"] = {
-				["bounds"] = {
-					["h"] = 18,
-					["w"] = 5,
-					["x"] = 179,
-					["y"] = 175,
-				},
-				["enabled"] = true,
-				["text"] = ":",
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "staticSkin2_ME",
-				},
-			},
-			["type"] = "Static",
-		},
         ["editCoalitions"] = {
 			["params"] = {
 				["bounds"] = {
@@ -541,7 +478,6 @@ dialog = {
 			},
 			["type"] = "Button",
 		},
-
 		["bEditImages"] = {
 			["params"] = {
 				["bounds"] = {
@@ -569,12 +505,7 @@ dialog = {
 								["center_center"] = "$nil$",
 								["center_top"] = "$nil$",
 								["file"] = "$nil$",
-								["insets"] = {
-									["bottom"] = "$nil$",
-									["left"] = "$nil$",
-									["right"] = "$nil$",
-									["top"] = "$nil$",
-								},
+								["insets"] = "$nil$",
 								["left_bottom"] = "$nil$",
 								["left_center"] = "$nil$",
 								["left_top"] = "$nil$",
@@ -661,12 +592,7 @@ dialog = {
 								["center_center"] = "$nil$",
 								["center_top"] = "$nil$",
 								["file"] = "$nil$",
-								["insets"] = {
-									["bottom"] = "$nil$",
-									["left"] = "$nil$",
-									["right"] = "$nil$",
-									["top"] = "$nil$",
-								},
+								["insets"] = "$nil$",
 								["left_bottom"] = "$nil$",
 								["left_center"] = "$nil$",
 								["left_top"] = "$nil$",
@@ -769,12 +695,7 @@ dialog = {
 								["center_center"] = "$nil$",
 								["center_top"] = "$nil$",
 								["file"] = "$nil$",
-								["insets"] = {
-									["bottom"] = "$nil$",
-									["left"] = "$nil$",
-									["right"] = "$nil$",
-									["top"] = "$nil$",
-								},
+								["insets"] = "$nil$",
 								["left_bottom"] = "$nil$",
 								["left_center"] = "$nil$",
 								["left_top"] = "$nil$",
@@ -877,12 +798,7 @@ dialog = {
 								["center_center"] = "$nil$",
 								["center_top"] = "$nil$",
 								["file"] = "$nil$",
-								["insets"] = {
-									["bottom"] = "$nil$",
-									["left"] = "$nil$",
-									["right"] = "$nil$",
-									["top"] = "$nil$",
-								},
+								["insets"] = "$nil$",
 								["left_bottom"] = "$nil$",
 								["left_center"] = "$nil$",
 								["left_top"] = "$nil$",
@@ -960,72 +876,6 @@ dialog = {
 			},
 			["type"] = "Button",
 		},
-		["cb_month"] = {
-			["params"] = {
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 127,
-					["x"] = 145,
-					["y"] = 149,
-				},
-				["enabled"] = true,
-				["tabOrder"] = 0,
-				["text"] = "Item1",
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "comboListSkinNew_",
-				},
-			},
-			["type"] = "ComboList",
-		},
-		["eYear"] = {
-			["params"] = {
-				["acceptDecimalPoint"] = false,
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 39,
-					["x"] = 290,
-					["y"] = 149,
-				},
-				["enabled"] = true,
-				["multiline"] = false,
-				["numeric"] = true,
-				["password"] = false,
-				["readOnly"] = false,
-				["tabOrder"] = 45,
-				["text"] = "1900",
-				["textWrapping"] = true,
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "editBoxNew",
-				},
-				["states"] = {
-					["released"] = {
-						[2] = {
-							["bkg"] = {
-								["center_bottom"] = "0x00000080",
-								["center_top"] = "0x00000080",
-								["left_bottom"] = "0x00000080",
-								["left_center"] = "0x00000080",
-								["left_top"] = "0x00000080",
-								["right_bottom"] = "0x00000080",
-								["right_center"] = "0x00000080",
-								["right_top"] = "0x00000080",
-							},
-						},
-					},
-				},
-			},
-			["type"] = "EditBox",
-		},
 		["editBoxBlue"] = {
 			["params"] = {
 				["acceptDecimalPoint"] = false,
@@ -1054,138 +904,6 @@ dialog = {
 			},
 			["type"] = "EditBox",
 		},
-		["editBoxDays"] = {
-			["params"] = {
-				["acceptDecimalPoint"] = false,
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 27,
-					["x"] = 105,
-					["y"] = 149,
-				},
-				["enabled"] = true,
-				["multiline"] = false,
-				["numeric"] = true,
-				["password"] = false,
-				["readOnly"] = false,
-				["tabOrder"] = 40,
-				["text"] = "1",
-				["textWrapping"] = true,
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "editBoxNew",
-				},
-				["states"] = {
-					["released"] = {
-						[2] = {
-							["bkg"] = {
-								["center_bottom"] = "0x00000080",
-								["center_top"] = "0x00000080",
-								["left_bottom"] = "0x00000080",
-								["left_center"] = "0x00000080",
-								["left_top"] = "0x00000080",
-								["right_bottom"] = "0x00000080",
-								["right_center"] = "0x00000080",
-								["right_top"] = "0x00000080",
-							},
-						},
-					},
-				},
-			},
-			["type"] = "EditBox",
-		},
-		["editBoxHours"] = {
-			["params"] = {
-				["acceptDecimalPoint"] = false,
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 27,
-					["x"] = 105,
-					["y"] = 173,
-				},
-				["enabled"] = true,
-				["multiline"] = false,
-				["numeric"] = true,
-				["password"] = false,
-				["readOnly"] = false,
-				["tabOrder"] = 50,
-				["text"] = "12",
-				["textWrapping"] = true,
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "editBoxNew",
-				},
-				["states"] = {
-					["released"] = {
-						[2] = {
-							["bkg"] = {
-								["center_bottom"] = "0x00000080",
-								["center_top"] = "0x00000080",
-								["left_bottom"] = "0x00000080",
-								["left_center"] = "0x00000080",
-								["left_top"] = "0x00000080",
-								["right_bottom"] = "0x00000080",
-								["right_center"] = "0x00000080",
-								["right_top"] = "0x00000080",
-							},
-						},
-					},
-				},
-			},
-			["type"] = "EditBox",
-		},
-		["editBoxMinutes"] = {
-			["params"] = {
-				["acceptDecimalPoint"] = false,
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 27,
-					["x"] = 146,
-					["y"] = 173,
-				},
-				["enabled"] = true,
-				["multiline"] = false,
-				["numeric"] = true,
-				["password"] = false,
-				["readOnly"] = false,
-				["tabOrder"] = 60,
-				["text"] = "0",
-				["textWrapping"] = true,
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "editBoxNew",
-				},
-				["states"] = {
-					["released"] = {
-						[2] = {
-							["bkg"] = {
-								["center_bottom"] = "0x00000080",
-								["center_top"] = "0x00000080",
-								["left_bottom"] = "0x00000080",
-								["left_center"] = "0x00000080",
-								["left_top"] = "0x00000080",
-								["right_bottom"] = "0x00000080",
-								["right_center"] = "0x00000080",
-								["right_top"] = "0x00000080",
-							},
-						},
-					},
-				},
-			},
-			["type"] = "EditBox",
-		},
 		["editBoxRed"] = {
 			["params"] = {
 				["acceptDecimalPoint"] = false,
@@ -1210,50 +928,6 @@ dialog = {
 			["skin"] = {
 				["params"] = {
 					["name"] = "editBoxNew",
-				},
-			},
-			["type"] = "EditBox",
-		},
-		["editBoxSeconds"] = {
-			["params"] = {
-				["acceptDecimalPoint"] = false,
-				["bounds"] = {
-					["h"] = 20,
-					["w"] = 27,
-					["x"] = 187,
-					["y"] = 173,
-				},
-				["enabled"] = true,
-				["multiline"] = false,
-				["numeric"] = true,
-				["password"] = false,
-				["readOnly"] = false,
-				["tabOrder"] = 70,
-				["text"] = "0",
-				["textWrapping"] = true,
-				["tooltip"] = "",
-				["visible"] = true,
-				["zindex"] = 0,
-			},
-			["skin"] = {
-				["params"] = {
-					["name"] = "editBoxNew",
-				},
-				["states"] = {
-					["released"] = {
-						[2] = {
-							["bkg"] = {
-								["center_bottom"] = "0x00000080",
-								["center_top"] = "0x00000080",
-								["left_bottom"] = "0x00000080",
-								["left_center"] = "0x00000080",
-								["left_top"] = "0x00000080",
-								["right_bottom"] = "0x00000080",
-								["right_center"] = "0x00000080",
-								["right_top"] = "0x00000080",
-							},
-						},
-					},
 				},
 			},
 			["type"] = "EditBox",
@@ -1646,10 +1320,12 @@ dialog = {
 					["h"] = 614,
 					["w"] = 383,
 					["x"] = 0,
-					["y"] = 203,
+					["y"] = 140,
 				},
 				["enabled"] = true,
 				["horzMouseWheel"] = false,
+				["layout"] = {
+				},
 				["text"] = "scrollPane0",
 				["tooltip"] = "",
 				["vertMouseWheel"] = true,
@@ -1695,6 +1371,8 @@ dialog = {
 		["draggable"] = false,
 		["enabled"] = true,
 		["hasCursor"] = true,
+		["layout"] = {
+		},
 		["lockFlow"] = false,
 		["modal"] = false,
 		["offscreen"] = false,

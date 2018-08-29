@@ -22,6 +22,7 @@ local mod_dictionary    = require('dictionary')
 local mod_setImage      = require('me_setImage')
 local CoalitionController	= require('Mission.CoalitionController')
 local panel_weather     = require('me_weather')
+local Terrain			= require('terrain')
 local mod_updateCoal    = require('Mission.CoalitionUpdate')
 
 require('i18n').setup(_M)
@@ -34,7 +35,6 @@ cdata = {
         redPic = _('RED PIC'),
         bluePic = _('BLUE PIC'),
         picture = _('PICTURE'),
-        start = _('START'),
         description = _('DESCRIPTION'), 
         redTask = _('RED TASK'), 
         blueTask = _('BLUE TASK'),
@@ -49,8 +49,6 @@ cdata = {
     }
     
 vdata = {
-    start_time = 28800,
-    date = {Year = 1900 , Month  = 1 , Day = 1},
     countryName = '',
     alliesString = '',
     enemiesString = '',
@@ -61,48 +59,9 @@ vdata = {
     coalitionName = '';
     group = '';
     player = nil;
-    playerUnit = nil;
-	modifiedTime = false
+    playerUnit = nil;	
 }
 
-defaultTimeByMonth = 
-{
-	[1] = 36000,
-	[2] = 36000,
-	[3] = 36000,
-	[4] = 36000,
-	[5] = 28800,
-	[6] = 28800,
-	[7] = 28800,
-	[8] = 28800,
-	[9] = 28800,
-	[10] = 36000,
-	[11] = 36000,
-	[12] = 36000,
-
-}
-
-function resetModifiedTime()
-	modifiedTime = false
-end
-
-
--- set start time
-function updateMissionStart(time, date, editMonth)
-    MissionModule.mission.date = date
-	
-	if modifiedTime == false and editMonth == "month" then
-		time = defaultTimeByMonth[date.Month]
-		U.setDataTime(editBoxYear, cb_month, editBoxHours, editBoxMinutes, editBoxSeconds, editBoxDays, time, date)
-	end
-	
-	if editMonth == "time" then
-		modifiedTime = true
-	end
-	
-    MissionModule.mission.start_time = time
-    panel_weather.updateSeason(time, date)
-end
 
 local x_
 local y_
@@ -133,21 +92,7 @@ local function create_()
     editBoxBlue = window.editBoxBlue
 
     bEditImages = window.bEditImages
-    
     editCoalitions = window.editCoalitions
-    
-    editBoxHours = window.editBoxHours
-    editBoxMinutes = window.editBoxMinutes
-    editBoxSeconds = window.editBoxSeconds
-    editBoxDays = window.editBoxDays
-    editBoxYear = window.eYear
-    
-    cb_month = window.cb_month
-    
-    U.fillComboMonths(cb_month)
-    
-    U.bindDataTimeCallback(editBoxYear, cb_month, editBoxHours, editBoxMinutes, editBoxSeconds, editBoxDays, updateMissionStart)
-    
     editBoxDescription = window.spDesc.editBoxDescription
     editBoxRedTask = window.spDesc.editBoxRedTask
     editBoxBlueTask = window.spDesc.editBoxBlueTask
@@ -175,9 +120,8 @@ function setupCallbacks()
 	editBoxNeutralsTask.onChange = descriptionNChange;
     editBoxSortie.onChange = sortieChange;
     bEditImages.onChange = bEditImages_onChange
-    editBoxYear.onChange = editBoxYear_onChange;
-    editCoalitions.onChange = editCoalitions_onChange
-end;
+    editCoalitions.onChange = editCoalitions_onChange                                            
+end
 
 function show(b)
     if not window then  
@@ -190,7 +134,7 @@ function show(b)
         b = update()
     else
         mod_setImage.show(false)
-        mod_updateCoal.show(false)
+        mod_updateCoal.show(false)                          
     end
     
     window:setVisible(b)
@@ -217,8 +161,6 @@ function update()
     vdata.sortie,
     vdata.coalitionName = BriefingUtils.extractPlayerDetails()
 
-    vdata.date = mission.date
-    vdata.start_time = mission.start_time;
     
     if window then
         editBoxRed:setText(table.concat(CoalitionController.getRedCoalitionNames(), ', '));
@@ -242,27 +184,11 @@ function update()
             editBoxNeutralsTask:setText(mission.descriptionNeutralsTask);
             vdata.descriptionNeutralsTask = mission.descriptionNeutralsTask;
         end;
-        
-
-        U.setDataTime(editBoxYear, cb_month, editBoxHours, editBoxMinutes, editBoxSeconds, editBoxDays, vdata.start_time, vdata.date)
     end
     
     return true
 end
 
-
-
-function applyChanges()
-    mission = MissionModule.mission;
-    if mission then
-        mission.start_time = vdata.start_time;
-        mission.descriptionText = editBoxDescription:getText();
-        mission.descriptionRedTask = editBoxRedTask:getText();
-        mission.descriptionBlueTask = editBoxBlueTask:getText();
-		mission.descriptionNeutralsTask = editBoxNeutralsTask:getText();
-        mission.sortie = editBoxSortie:getText();
-    end;
-end
 
 function OpenFileDlg(caption, color)
 	local path = MeSettings.getImagePath()
@@ -299,7 +225,6 @@ local function generatePictureRandomName(path)
 	return result
 end
 
-
 function editCoalitions_onChange()
     mod_updateCoal.show(true)
     -- if mod_updateCoal.getVisible() == true then
@@ -313,7 +238,6 @@ function editCoalitions_onChange()
     mod_setImage.show(curId, widget, list, cdata.redPicText)]]
 end
 
-
 function bEditImages_onChange()
     
     if mod_setImage:getVisible() == true then
@@ -325,11 +249,6 @@ function bEditImages_onChange()
     local widget, list = getPicWidget('red')
     local curId = getCurId(widget, 'pictureFileNameR')
     mod_setImage.show(curId, widget, list, cdata.redPicText)]]
-end
-
-function editBoxYear_onChange(self)
-    local year = base.tonumber(self:getText())
-    
 end
     
 function descriptionChange(self, text)
@@ -355,36 +274,16 @@ end;
 function setPlannerMission(planner_mission)
 	if (planner_mission == true) then
         editBoxSortie:setReadOnly(true)
-
         bEditImages:setEnabled(false)
-        editCoalitions:setEnabled(false)
-
-        editBoxHours:setReadOnly(true)
-        editBoxMinutes:setReadOnly(true)
-        editBoxSeconds:setReadOnly(true)
-        editBoxDays:setReadOnly(true)
-
         editBoxDescription:setReadOnly(true)
         editBoxRedTask:setReadOnly(true)
         editBoxBlueTask:setReadOnly(true)
-        
-        cb_month:setEnabled(false)
 	else
         editBoxSortie:setReadOnly(false)
-
         bEditImages:setEnabled(true)
-        editCoalitions:setEnabled(true)
-
-        editBoxHours:setReadOnly(false)
-        editBoxMinutes:setReadOnly(false)
-        editBoxSeconds:setReadOnly(false)
-        editBoxDays:setReadOnly(false)
-
         editBoxDescription:setReadOnly(false)
         editBoxRedTask:setReadOnly(false)
         editBoxBlueTask:setReadOnly(false)
-        
-        cb_month:setEnabled(true)
 	end
 end
 

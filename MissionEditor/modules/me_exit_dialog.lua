@@ -53,7 +53,7 @@ local function show()
 			-- их нужно закрыть перед выходом
 			FileDialog.close()
 			CoalitionPanel.close()
-      CoalitionUpdate.close()
+            CoalitionUpdate.close()
 		end
 	end
     

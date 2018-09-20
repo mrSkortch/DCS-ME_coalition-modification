@@ -123,7 +123,7 @@ local function initialize()
 	--CoalitionData.setDefaultCoalitions()
 	--CoalitionUtils.setController(CoalitionController)
 	CoalitionPanel.setController(CoalitionController)
-  CoalitionUpdate.setController(CoalitionController)
+    CoalitionUpdate.setController(CoalitionController)
 	MapLayerPanel.setController(MapLayerController)
 	
 	MapLayerController.onMapLayerPanelShow = function()

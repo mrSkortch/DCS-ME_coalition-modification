@@ -532,17 +532,6 @@ local function create_()
 		--controller_.setDefaultCoalitions()
 	--end
     
-  function initTerr()
-      if MapWindow.initTerrain() == true then
-          window:setVisible(false)
-      else
-          MsgWindow.error(_("error initialization terrain:")  .. env.mission.theatre, _('ERROR'), 'OK'):show()
-      end 
-      
-      --module_mission.create_new_mission(true)
-      return true
-  end
-	
 	function window.main_panel.buttonOk:onChange()
 	  --controller_.selectTheatreOfWar(theatreOfWarName_, true)        
 		controller_.setCoalitions(redCoalition_, blueCoalition_, neutralCoalition_)

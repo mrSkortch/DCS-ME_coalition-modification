@@ -118,10 +118,6 @@ local function initialize()
 	MissionMapView.setNavigationPointController(NavigationPointController)
 	NavigationPointController.setMapView(MissionMapView)
 	
-	-- FIXME: переместить инициализацию сюда из MissionEditor.lua
-	--CoalitionData.setController(CoalitionController)
-	--CoalitionData.setDefaultCoalitions()
-	--CoalitionUtils.setController(CoalitionController)
 	CoalitionPanel.setController(CoalitionController)
     CoalitionUpdate.setController(CoalitionController)
 	MapLayerPanel.setController(MapLayerController)
@@ -196,7 +192,7 @@ local function getNewTriggerZoneRadius()
 end
 
 local function createTriggerZone(mapX, mapY)
-	local triggerZoneId = TriggerZoneController.addTriggerZone(_('New Trigger Zone'), mapX, mapY, getNewTriggerZoneRadius())
+	local triggerZoneId = TriggerZoneController.addTriggerZone(_('New Trigger Zone'), mapX, mapY, getNewTriggerZoneRadius(), {})
 	
 	selectObject(triggerZoneId)
 	TriggerZoneController.selectTriggerZone(triggerZoneId)

@@ -29,7 +29,7 @@ local function show()
 			
 			if result then
 				if MapWindow.getVisible() then
-					if me_mission.isMissionModified() or not me_mission.getMissionPathIsSaved() then
+					if me_mission.isSignedMission() ~= true and (me_mission.isMissionModified() or not me_mission.getMissionPathIsSaved()) then
 						handler_:close()
 						
 						local button = me_menubar.showOnExitSavePrompt(yes, no, cancel)

@@ -23,6 +23,7 @@ local ModulesMediator				= require('Mission.ModulesMediator')
 local MissionOptionsView			= require('Options.MissionOptionsView')
 local OptionsController				= require('Options.Controller')
 local i18n							= require('i18n')
+local panelContextMenu				= require('me_contextMenu')                                                     
 
 local _ = i18n.ptranslate
 
@@ -168,6 +169,7 @@ local function showObjectPanels(objectId)
 		elseif MissionData.airdromeType() == objectType then
 			AirdromeController.selectAirdrome(objectId)
 			AirdromeController.showWarehousePanel()
+            panelContextMenu.show(false)                   
 		end
 	end
 end
@@ -302,6 +304,7 @@ local function onToolbarTriggerZone(turnedOn)
 	else
 		TriggerZoneController.hidePanel()
 	end
+    ModulesMediator.getPanelContextMenu().show(false)                                              
 end
 
 local function onToolbarTriggerZoneList(turnedOn)
@@ -319,6 +322,7 @@ local function onToolbarTriggerZoneList(turnedOn)
 	else
 		TriggerZoneController.hideList()
 	end	
+    ModulesMediator.getPanelContextMenu().show(false)                                              
 end
 
 local function onToolbarNavigationPoint(turnedOn)
@@ -329,6 +333,7 @@ local function onToolbarNavigationPoint(turnedOn)
 	else
 		NavigationPointController.hidePanel()
 	end
+    ModulesMediator.getPanelContextMenu().show(false)                                              
 end
 
 local function onToolbarMapOptions(turnedOn)
@@ -337,6 +342,7 @@ local function onToolbarMapOptions(turnedOn)
 	else
 		MapLayerController.hideMapLayerPanel()
 	end
+    ModulesMediator.getPanelContextMenu().show(false)                                              
 end
 
 local function onToolbarMissionOptions(turnedOn)
@@ -345,6 +351,7 @@ local function onToolbarMissionOptions(turnedOn)
 	else
 		MissionOptionsView.hide()
 	end
+    ModulesMediator.getPanelContextMenu().show(false)                                              
 end
 
 local function getPrevId(currId, ids)

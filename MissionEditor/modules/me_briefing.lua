@@ -78,7 +78,7 @@ end
 local function create_()
     mission = MissionModule.mission
     
-    window = DialogLoader.spawnDialogFromFile(base.dialogsDir .. "me_briefing_panel.dlg", cdata)
+    window = DialogLoader.spawnDialogFromFile('MissionEditor/modules/dialogs/me_briefing_panel.dlg', cdata)
     window:setBounds(x_, y_, w_, h_)
     
     function window:onClose()

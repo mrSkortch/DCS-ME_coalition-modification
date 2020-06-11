@@ -13,11 +13,7 @@ local i18n			= require('i18n')
 local MapWindow		= require('me_map_window')
 local MsgWindow		= require('MsgWindow')
 local module_mission = require('me_mission')
---local iAircraft			= require('me_aircraft')
---local iShip						= require('me_ship')
---local iVehicle					= require('me_vehicle')
---local iStatic					= require('me_static')
---local me_brief = require('me_briefing')
+
 local waitScreen  	= require('me_wait_screen')
 local me_db_api		= require('me_db_api')
 
@@ -87,7 +83,7 @@ local function getCountrySide(compTbl)
 	
   for index, cid in pairs(neutralCoalition_) do
     local cname = controller_.getCountryNameById(cid)
-		rtnTbl[cname] = 'neutral'
+		rtnTbl[cname] = 'neutrals'
 	end
 	return rtnTbl
 end
@@ -106,7 +102,7 @@ local function getCountrySideOld(compTbl)
 	
   for index, cid in pairs(neutralCoalitionOld_) do
     local cname = controller_.getCountryNameById(cid)
-		rtnTbl[cname] = 'neutral'
+		rtnTbl[cname] = 'neutrals'
 	end
 	return rtnTbl
 end
@@ -132,7 +128,7 @@ function populateLog2(changelog)
       logText[#logText + 1] = (data.name .. _(' is switching from ') .. _(firstToUpper(data.old)) .. _(' to ') .. _(firstToUpper(data.new)) .. '\n')
       local groups = 0
       local units = 0
-      if data.old == 'red' or data.old == 'blue' then
+      if data.old == 'red' or data.old == 'blue' or data.old == 'neutrals' then
         for dbCountryIndex, dbCountryData in pairs(module_mission.mission.coalition[data.old].country) do
           if dbCountryData.name == data.name then
             for obj_type_name, objCat in pairs(dbCountryData) do
@@ -151,11 +147,8 @@ function populateLog2(changelog)
         end
       end
       logText[#logText + 1] = ('  - ' .. units .. _(' units in ') .. groups .. _(' groups will '))
-      if data.new == 'neutral' then
-        logText[#logText + 1] = _('be removed')
-      else
-        logText[#logText + 1] = _('switch teams')
-      end
+      logText[#logText + 1] = _('switch teams')
+
       logText[#logText + 1] = '\n'
     else
       logText[#logText + 1] = (data.name .. _(': changes reset\n'))
@@ -166,71 +159,16 @@ function populateLog2(changelog)
 	--listBoxLog_:setText(table.concat(logText))
 end
 
-function populateLog(changelist)
-	local logText = {}
-	
-	for countryName, data in pairs(changelist) do
-		logText[#logText + 1] = (countryName .. _(' is switching from ') .. _(data.old) .. _(' to ') .. _(data.new) .. '\n')
-		local groups = 0
-		local units = 0
-		if data.old == 'red' or data.old == 'blue' then
-			for dbCountryIndex, dbCountryData in pairs(module_mission.mission.coalition[data.old].country) do
-				if dbCountryData.name == countryName then
-					for obj_type_name, objCat in pairs(dbCountryData) do
-						if obj_type_name == "helicopter" or obj_type_name == "ship" or obj_type_name == "plane" or obj_type_name == "vehicle" or obj_type_name == "static" then
-							for typeIndex, typData in pairs(objCat) do 
-								for index, setData in pairs(typData) do
-									groups = groups + 1
-									if setData.units then
-										units = #setData.units + units
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-		logText[#logText + 1] = ('   ' .. units .. _(' units in ') .. groups .. _(' groups will '))
-		if data.new == 'neutral' then
-			logText[#logText + 1] = _('be removed')
-		else
-			logText[#logText + 1] = _('switch teams')
-		end
-		logText[#logText + 1] = '\n'
-	end
-	
-  editBoxLog_:setText(table.concat(logText))
-	--listBoxLog_:setText(table.concat(logText))
-end
 
 function switchCoalition(changelist)
 	for countryName, data in pairs(changelist) do
-		if data.old == 'neutral' then 
-			local newCountryTable = {}
-			newCountryTable['name'] = countryName
-			newCountryTable['id'] = me_db_api.country_by_name[countryName].WorldID
-			
-			table.insert(module_mission.mission.coalition[data.new].country, newCountryTable)
-			--table.insert(vdata.coalitions_country_names, countryName)
-		else
-			if data.new == 'neutral' then
-				for oldIndex, oldData in pairs(module_mission.mission.coalition[data.old].country) do
-					if oldData.name == countryName then
-						--removeFromCountryNames(countryName)
-						table.remove(module_mission.mission.coalition[data.old].country, oldIndex)
-					end
-				end
-				
-			else
-				for oldCoaIndex, oldCoaData in pairs(module_mission.mission.coalition[data.old].country) do
-					if oldCoaData.name == countryName then
-						table.insert(module_mission.mission.coalition[data.new].country, oldCoaData)
-						table.remove(module_mission.mission.coalition[data.old].country, oldCoaIndex)
-					end
-				end
-			end
-		end
+        for oldCoaIndex, oldCoaData in pairs(module_mission.mission.coalition[data.old].country) do
+            if oldCoaData.name == countryName then
+                table.insert(module_mission.mission.coalition[data.new].country, oldCoaData)
+                table.remove(module_mission.mission.coalition[data.old].country, oldCoaIndex)
+            end
+        end
+
 	end
 end
 
@@ -306,7 +244,7 @@ local function evalCoaChange(run)
 	
   if added == true and run == true then
 		switchCoalition(changelist)
-	  updateCoalitions()
+        updateCoalitions()
 	end
 	
   return

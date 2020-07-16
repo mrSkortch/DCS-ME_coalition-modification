@@ -2,7 +2,7 @@ dialog = {
 	["children"] = {
 		["Static1"] = {
 			["params"] = {
- 				["angle"] = 0,                 
+				["angle"] = 0,
 				["bounds"] = {
 					["h"] = 20,
 					["w"] = 93,
@@ -13,7 +13,7 @@ dialog = {
 				["pivotPoint"] = {
 					["x"] = 0,
 					["y"] = 0,
-				},                  
+				},
 				["text"] = "$red",
 				["tooltip"] = "",
 				["visible"] = true,
@@ -37,7 +37,7 @@ dialog = {
 		},
 		["Static2"] = {
 			["params"] = {
-				["angle"] = 0,                  
+                ["angle"] = 0,  
 				["bounds"] = {
 					["h"] = 20,
 					["w"] = 93,
@@ -48,7 +48,7 @@ dialog = {
 				["pivotPoint"] = {
 					["x"] = 0,
 					["y"] = 0,
-				},                      
+				},
 				["text"] = "$blue",
 				["tooltip"] = "",
 				["visible"] = true,
@@ -76,7 +76,7 @@ dialog = {
 					["h"] = 24,
 					["w"] = 250,
 					["x"] = 39,
-					["y"] = 800,
+					["y"] = 750,
 				},
 				["enabled"] = true,
 				["tabOrder"] = 0,
@@ -488,6 +488,7 @@ dialog = {
 			},
 			["type"] = "Button",
 		},
+
 		["bEditImages"] = {
 			["params"] = {
 				["bounds"] = {
@@ -938,7 +939,7 @@ dialog = {
 			["skin"] = {
 				["params"] = {
 					["name"] = "editBoxNew",
-				},
+                },
 			},
 			["type"] = "EditBox",
 		},
@@ -1150,7 +1151,7 @@ dialog = {
 				},
 				["staticBlueTask"] = {
 					["params"] = {
-						["angle"] = 0,                    
+						["angle"] = 0,
 						["bounds"] = {
 							["h"] = 30,
 							["w"] = 361,
@@ -1158,10 +1159,10 @@ dialog = {
 							["y"] = 306,
 						},
 						["enabled"] = true,
- 						["pivotPoint"] = {
+						["pivotPoint"] = {
 							["x"] = 0,
 							["y"] = 0,
-						},                       
+						},
 						["text"] = "$blueTask",
 						["tooltip"] = "",
 						["visible"] = true,
@@ -1199,7 +1200,7 @@ dialog = {
 				},
 				["staticDescription"] = {
 					["params"] = {
-						["angle"] = 0,                 
+						["angle"] = 0,
 						["bounds"] = {
 							["h"] = 30,
 							["w"] = 361,
@@ -1210,7 +1211,7 @@ dialog = {
 						["pivotPoint"] = {
 							["x"] = 0,
 							["y"] = 0,
-						},                        
+						},
 						["text"] = "$description",
 						["tooltip"] = "",
 						["visible"] = true,
@@ -1248,7 +1249,7 @@ dialog = {
 				},
 				["staticNeutralsTask"] = {
 					["params"] = {
- 						["angle"] = 0,                                
+						["angle"] = 0,
 						["bounds"] = {
 							["h"] = 30,
 							["w"] = 361,
@@ -1256,10 +1257,10 @@ dialog = {
 							["y"] = 459,
 						},
 						["enabled"] = true,
- 						["pivotPoint"] = {
+						["pivotPoint"] = {
 							["x"] = 0,
 							["y"] = 0,
-						},                       
+						},
 						["text"] = "$neutralsTask",
 						["tooltip"] = "",
 						["visible"] = true,
@@ -1297,7 +1298,7 @@ dialog = {
 				},
 				["staticRedTask"] = {
 					["params"] = {
-						["angle"] = 0,                     
+						["angle"] = 0,
 						["bounds"] = {
 							["h"] = 30,
 							["w"] = 361,
@@ -1305,10 +1306,10 @@ dialog = {
 							["y"] = 153,
 						},
 						["enabled"] = true,
- 						["pivotPoint"] = {
+						["pivotPoint"] = {
 							["x"] = 0,
 							["y"] = 0,
-						},                       
+						},
 						["text"] = "$redTask",
 						["tooltip"] = "",
 						["visible"] = true,
@@ -1354,15 +1355,15 @@ dialog = {
 				},
 				["enabled"] = true,
 				["horzMouseWheel"] = false,
- 				["horzScrollBarPageStep"] = 0,
-				["horzScrollBarStep"] = 1,   
+				["horzScrollBarPageStep"] = 0,
+				["horzScrollBarStep"] = 1,
 				["layout"] = {
 				},
 				["text"] = "scrollPane0",
 				["tooltip"] = "",
 				["vertMouseWheel"] = true,
- 				["vertScrollBarPageStep"] = 0,
-				["vertScrollBarStep"] = 1,               
+				["vertScrollBarPageStep"] = 0,
+				["vertScrollBarStep"] = 1,
 				["visible"] = true,
 				["zindex"] = 0,
 			},
@@ -1375,7 +1376,7 @@ dialog = {
 		},
 		["static0"] = {
 			["params"] = {
- 				["angle"] = 0,                 
+				["angle"] = 0,
 				["bounds"] = {
 					["h"] = 20,
 					["w"] = 93,
@@ -1383,10 +1384,10 @@ dialog = {
 					["y"] = 10,
 				},
 				["enabled"] = true,
-                ["pivotPoint"] = {
-            ["x"] = 0,
-            ["y"] = 0,
-        },              
+				["pivotPoint"] = {
+					["x"] = 0,
+					["y"] = 0,
+				},
 				["text"] = "$sortie",
 				["tooltip"] = "",
 				["visible"] = true,
@@ -1407,7 +1408,7 @@ dialog = {
 			["x"] = 0,
 			["y"] = 0,
 		},
- 		["clipResizeCursor"] = false,                              
+		["clipResizeCursor"] = false,
 		["draggable"] = false,
 		["enabled"] = true,
 		["hasCursor"] = true,

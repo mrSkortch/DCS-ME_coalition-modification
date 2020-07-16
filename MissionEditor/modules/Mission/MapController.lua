@@ -56,6 +56,9 @@ local function selectObject(objectId)
 	end
 end
 
+local function getSelectedObjectId()
+	return selectedObjectId_
+end                                        
 local function moveCameraToTriggerZonePosition(triggerZoneId)
 	if not TriggerZoneController.getTriggerZoneHidden(triggerZoneId) then
 		local x, y = TriggerZoneController.getTriggerZonePosition(triggerZoneId)
@@ -194,12 +197,13 @@ local function getNewTriggerZoneRadius()
 end
 
 local function createTriggerZone(mapX, mapY)
-	local triggerZoneId = TriggerZoneController.addTriggerZone(_('New Trigger Zone'), mapX, mapY, getNewTriggerZoneRadius(), {})
+	local triggerZoneId = TriggerZoneController.addTriggerZone(_('New Trigger Zone').."-1", mapX, mapY, getNewTriggerZoneRadius(), {})
 	
 	selectObject(triggerZoneId)
 	TriggerZoneController.selectTriggerZone(triggerZoneId)
 	
 	toolbar.resetTriggerZoneState()
+    return triggerZoneId                                           
 end
 
 local function createNavigationPoint(mapX, mapY)
@@ -463,6 +467,8 @@ return {
 	pickStaticWarehouse			= pickStaticWarehouse,			
 	
 	createMapObjects			= MissionMapView.createMapObjects,
+ 	createTriggerZone			= createTriggerZone,
+	onDeleteTriggerZone			= onDeleteTriggerZone,                                        
 	
 	onToolbarTriggerZone		= onToolbarTriggerZone,
 	onToolbarTriggerZoneList	= onToolbarTriggerZoneList,
@@ -477,4 +483,5 @@ return {
 	onExit						= onExit,
 	
 	onShowMapWndow				= onShowMapWndow,
+    getSelectedObjectId			= getSelectedObjectId,                                                                                                                                     
 }

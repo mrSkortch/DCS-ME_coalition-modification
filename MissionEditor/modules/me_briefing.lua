@@ -278,12 +278,14 @@ function setPlannerMission(planner_mission)
         editBoxDescription:setReadOnly(true)
         editBoxRedTask:setReadOnly(true)
         editBoxBlueTask:setReadOnly(true)
+        editCoalitions:setEnabled(false)                                
 	else
         editBoxSortie:setReadOnly(false)
         bEditImages:setEnabled(true)
         editBoxDescription:setReadOnly(false)
         editBoxRedTask:setReadOnly(false)
         editBoxBlueTask:setReadOnly(false)
+        editCoalitions:setEnabled(true)                               
 	end
 end
 

@@ -146,9 +146,7 @@ function populateLog2(changelog)
           end
         end
       end
-      logText[#logText + 1] = ('  - ' .. units .. _(' units in ') .. groups .. _(' groups will '))
-      logText[#logText + 1] = _('switch teams')
-
+      logText[#logText + 1] = ('  - ' .. units .. _(' units in ') .. groups .. _(' groups will switch teams'))
       logText[#logText + 1] = '\n'
     else
       logText[#logText + 1] = (data.name .. _(': changes reset\n'))

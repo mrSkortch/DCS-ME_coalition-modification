@@ -23,7 +23,7 @@ local ModulesMediator				= require('Mission.ModulesMediator')
 local MissionOptionsView			= require('Options.MissionOptionsView')
 local OptionsController				= require('Options.Controller')
 local i18n							= require('i18n')
-local panelContextMenu				= require('me_contextMenu')                                                     
+local panelContextMenu				= require('me_contextMenu')
 
 local _ = i18n.ptranslate
 
@@ -58,7 +58,8 @@ end
 
 local function getSelectedObjectId()
 	return selectedObjectId_
-end                                        
+end
+
 local function moveCameraToTriggerZonePosition(triggerZoneId)
 	if not TriggerZoneController.getTriggerZoneHidden(triggerZoneId) then
 		local x, y = TriggerZoneController.getTriggerZonePosition(triggerZoneId)
@@ -172,7 +173,7 @@ local function showObjectPanels(objectId)
 		elseif MissionData.airdromeType() == objectType then
 			AirdromeController.selectAirdrome(objectId)
 			AirdromeController.showWarehousePanel()
-            panelContextMenu.show(false)                   
+            panelContextMenu.show(false)
 		end
 	end
 end
@@ -203,7 +204,8 @@ local function createTriggerZone(mapX, mapY)
 	TriggerZoneController.selectTriggerZone(triggerZoneId)
 	
 	toolbar.resetTriggerZoneState()
-    return triggerZoneId                                           
+    
+    return triggerZoneId
 end
 
 local function createNavigationPoint(mapX, mapY)
@@ -308,7 +310,7 @@ local function onToolbarTriggerZone(turnedOn)
 	else
 		TriggerZoneController.hidePanel()
 	end
-    ModulesMediator.getPanelContextMenu().show(false)                                              
+    ModulesMediator.getPanelContextMenu().show(false)
 end
 
 local function onToolbarTriggerZoneList(turnedOn)
@@ -326,7 +328,7 @@ local function onToolbarTriggerZoneList(turnedOn)
 	else
 		TriggerZoneController.hideList()
 	end	
-    ModulesMediator.getPanelContextMenu().show(false)                                              
+    ModulesMediator.getPanelContextMenu().show(false)
 end
 
 local function onToolbarNavigationPoint(turnedOn)
@@ -337,7 +339,7 @@ local function onToolbarNavigationPoint(turnedOn)
 	else
 		NavigationPointController.hidePanel()
 	end
-    ModulesMediator.getPanelContextMenu().show(false)                                              
+    ModulesMediator.getPanelContextMenu().show(false)
 end
 
 local function onToolbarMapOptions(turnedOn)
@@ -346,7 +348,7 @@ local function onToolbarMapOptions(turnedOn)
 	else
 		MapLayerController.hideMapLayerPanel()
 	end
-    ModulesMediator.getPanelContextMenu().show(false)                                              
+    ModulesMediator.getPanelContextMenu().show(false)
 end
 
 local function onToolbarMissionOptions(turnedOn)
@@ -355,7 +357,7 @@ local function onToolbarMissionOptions(turnedOn)
 	else
 		MissionOptionsView.hide()
 	end
-    ModulesMediator.getPanelContextMenu().show(false)                                              
+    ModulesMediator.getPanelContextMenu().show(false)
 end
 
 local function getPrevId(currId, ids)
@@ -453,12 +455,17 @@ local function onShowMapWndow()
 	end
 end
 
+local function triggerZoneHidePanel()
+	TriggerZoneController.hidePanel()
+end
+
 return {
 	initialize					= initialize,
 	
 	-- FIXME: временно 
 	resetSelection				= resetSelection,
 	
+	selectObject				= selectObject,
 	onMapMouseDown				= onMapMouseDown,
 	onMapMouseUp				= onMapMouseUp,
 	onMapMouseMove				= onMapMouseMove,
@@ -467,9 +474,12 @@ return {
 	pickStaticWarehouse			= pickStaticWarehouse,			
 	
 	createMapObjects			= MissionMapView.createMapObjects,
- 	createTriggerZone			= createTriggerZone,
-	onDeleteTriggerZone			= onDeleteTriggerZone,                                        
+    createTriggerZone			= createTriggerZone,
+	onDeleteTriggerZone			= onDeleteTriggerZone,
+	triggerZoneHidePanel		= triggerZoneHidePanel,
 	
+	onDeleteNavigationPoint		= onDeleteNavigationPoint,
+		
 	onToolbarTriggerZone		= onToolbarTriggerZone,
 	onToolbarTriggerZoneList	= onToolbarTriggerZoneList,
 	onToolbarNavigationPoint	= onToolbarNavigationPoint,
@@ -483,5 +493,5 @@ return {
 	onExit						= onExit,
 	
 	onShowMapWndow				= onShowMapWndow,
-    getSelectedObjectId			= getSelectedObjectId,                                                                                                                                     
+    getSelectedObjectId			= getSelectedObjectId,
 }
